@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>GTM Sandbox — Northgate Roofing (test site)</title>
+
+<!-- ============================================================
+     PASTE YOUR GTM CONTAINER SNIPPET (part 1 of 2) DIRECTLY BELOW
+     Google Tag Manager > Admin > Install Google Tag Manager
+     It starts with:  <script>(function(w,d,s,l,i){...
+     ============================================================ -->
+
+<!-- PASTE GTM HEAD SNIPPET HERE -->
+
+<!-- ============================================================ -->
+
+<script>
+  // dataLayer must exist before GTM loads. The GTM snippet creates it too,
+  // but declaring it here means this page works even before GTM is installed.
+  window.dataLayer = window.dataLayer || [];
+</script>
+
+<style>
+  :root{
+    --ink:#1c1c1e; --muted:#6b6b70; --line:#e3e3e6; --bg:#fbfbfc;
+    --accent:#2f5d8a; --accent-dark:#254a6e; --ok:#1e7a4d; --warn:#8a5a00;
+    --code-bg:#1c1f26; --code-ink:#e6e8ec;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  .bar{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .logo{font-weight:700;letter-spacing:-.01em}
+  .logo span{color:var(--accent)}
+  nav{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+  nav a{color:var(--muted);text-decoration:none}
+  nav a:hover{color:var(--accent)}
+  main{max-width:960px;margin:0 auto;padding:0 20px 80px}
+  section{padding:44px 0;border-bottom:1px solid var(--line)}
+  h1{font-size:30px;line-height:1.25;margin:0 0 12px;letter-spacing:-.02em}
+  h2{font-size:20px;margin:0 0 6px;letter-spacing:-.01em}
+  h3{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 14px}
+  p{margin:0 0 14px;max-width:62ch}
+  .lede{font-size:18px;color:var(--muted)}
+  .btn{
+    display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:6px;
+    padding:11px 20px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;
+  }
+  .btn:hover{background:var(--accent-dark)}
+  .btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--accent)}
+  .btn.secondary:hover{background:#f0f5fa}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .note{
+    background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:0 6px 6px 0;padding:12px 16px;font-size:14px;color:var(--muted);margin:16px 0;max-width:62ch;
+  }
+  .note b{color:var(--ink)}
+  .note code{background:#eef1f4;padding:1px 5px;border-radius:3px;font-size:12.5px;color:var(--ink)}
+  form{background:#fff;border:1px solid var(--line);border-radius:8px;padding:22px;max-width:460px}
+  label{display:block;font-size:13px;font-weight:600;margin:0 0 5px}
+  input,select{
+    width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:5px;
+    font:inherit;margin-bottom:14px;background:#fff;color:var(--ink)
+  }
+  input:focus,select:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:var(--accent)}
+  #confirmation{
+    display:none;background:#f2f8f4;border:1px solid #cfe6da;border-left:3px solid var(--ok);
+    border-radius:0 8px 8px 0;padding:22px;max-width:460px
+  }
+  #confirmation h2{color:var(--ok)}
+  .scroller{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px;margin-top:8px}
+  .filler{color:var(--muted);font-size:14px}
+  #visibility-target{
+    margin-top:26px;background:linear-gradient(135deg,#2f5d8a,#4a7fb0);color:#fff;
+    border-radius:8px;padding:30px;text-align:center;font-weight:600
+  }
+  .panel{
+    position:fixed;right:0;bottom:0;width:400px;max-width:100%;max-height:46vh;
+    background:var(--code-bg);color:var(--code-ink);border-radius:10px 0 0 0;
+    box-shadow:0 -4px 24px rgba(0,0,0,.28);display:flex;flex-direction:column;z-index:50
+  }
+  .panel-head{
+    padding:9px 14px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    border-bottom:1px solid #32363f;display:flex;align-items:center;gap:10px
+  }
+  .panel-head button{
+    margin-left:auto;background:#32363f;color:var(--code-ink);border:0;border-radius:4px;
+    padding:4px 9px;font:inherit;font-size:11px;cursor:pointer
+  }
+  .panel-head button:hover{background:#41465180}
+  .panel-body{
+    overflow:auto;padding:10px 14px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    white-space:pre-wrap;word-break:break-word
+  }
+  .panel-body .entry{border-bottom:1px solid #2a2e36;padding:7px 0}
+  .panel-body .entry:last-child{border-bottom:0}
+  .panel-body .ev{color:#7fd1a0;font-weight:700}
+  .empty{color:#7c828d;font-style:italic}
+  footer{max-width:960px;margin:0 auto;padding:26px 20px 120px;color:var(--muted);font-size:13px}
+  @media(max-width:700px){.panel{width:100%;max-height:40vh}}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     PASTE YOUR GTM CONTAINER SNIPPET (part 2 of 2) DIRECTLY BELOW
+     It starts with:  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-...
+     ============================================================ -->
+
+<!-- PASTE GTM BODY SNIPPET HERE -->
+
+<!-- ============================================================ -->
+
+<header>
+  <div class="bar">
+    <div class="logo">Northgate <span>Roofing</span></div>
+    <nav>
+      <a href="#services" id="nav-services">Services</a>
+      <a href="#quote" id="nav-quote">Get a quote</a>
+      <a href="tel:+15551234567" id="phone-link">(555) 123-4567</a>
+      <a href="https://www.google.com" id="outbound-link" target="_blank" rel="noopener">Reviews ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <h1>A test site that exists only to be tagged</h1>
+    <p class="lede">Nothing here is real. Every element below exists so you can practise one specific technique from the GTM course without touching a client.</p>
+    <div class="row">
+      <button class="btn" id="hero-cta" data-cta="hero-primary">Get a free inspection</button>
+      <button class="btn secondary" id="hero-secondary" data-cta="hero-secondary">See our work</button>
+    </div>
+    <div class="note">
+      <b>Before anything works:</b> paste your container snippet into the two marked places in this file's source, then open GTM &rarr; Preview and enter this page's URL. The panel in the bottom right shows every <code>dataLayer</code> push in real time, so you can see what GTM sees.
+    </div>
+  </section>
+
+  <section id="services">
+    <h3>Click tracking</h3>
+    <h2>Buttons, links and phone numbers</h2>
+    <p>Four different click types, each needing a slightly different trigger. Use Preview mode to watch which built-in variables change on each one.</p>
+    <div class="row">
+      <button class="btn" id="btn-quote" data-cta="services-quote">Request a quote</button>
+      <button class="btn secondary" id="btn-brochure" data-cta="services-brochure">Download brochure</button>
+      <a class="btn secondary" href="#quote" id="internal-link">Jump to form</a>
+      <a class="btn secondary" href="mailto:hello@example.com" id="email-link">Email us</a>
+    </div>
+    <div class="note">
+      <b>Practise:</b> a trigger on <code>Click Classes</code>, one on <code>Click ID</code>, and one on the <code>data-cta</code> attribute. The third needs a user-defined Data Layer Variable — this is the difference between tracking <i>a</i> click and tracking <i>which</i> click.
+    </div>
+  </section>
+
+  <section id="quote">
+    <h3>The important one</h3>
+    <h2>A form with no thank-you page</h2>
+    <p>Submitting this form does not change the URL. The form hides and a confirmation appears in its place. This is how most lead generation sites behave, and it is the most common reason a conversion is never counted.</p>
+
+    <form id="lead-form" novalidate>
+      <label for="service">What do you need?</label>
+      <select id="service" name="service">
+        <option value="roof-replacement" data-value="250">Roof replacement</option>
+        <option value="roof-repair" data-value="120">Roof repair</option>
+        <option value="gutter-install" data-value="90">Gutter installation</option>
+        <option value="inspection" data-value="40">Free inspection</option>
+      </select>
+
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Jane Doe">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="jane@example.com">
+
+      <button class="btn" type="submit" id="form-submit">Request my quote</button>
+    </form>
+
+    <div id="confirmation">
+      <h2>Thanks — we'll be in touch</h2>
+      <p style="margin-bottom:16px">Someone from the team will call within one business day.</p>
+      <button class="btn secondary" id="reset-form">Reset the form</button>
+    </div>
+
+    <div class="note">
+      <b>Practise two ways, then compare:</b><br>
+      1. An <b>element visibility</b> trigger on <code>#confirmation</code> — works without touching the site's code.<br>
+      2. A <b>custom event</b> trigger on the <code>generate_lead</code> push this form makes — carries the value and the service with it.<br>
+      The second is better whenever you can get it, and the panel shows you exactly what it sends.
+    </div>
+  </section>
+
+  <section>
+    <h3>Event parameters</h3>
+    <h2>Passing value, currency and service</h2>
+    <p>The form above pushes a <code>generate_lead</code> event carrying a value, a currency and an items array. Change the dropdown and submit again — the value changes with it.</p>
+    <div class="note">
+      <b>Practise:</b> pull <code>value</code> and <code>currency</code> into a GA4 event tag as parameters, then pull <code>ecommerce.items.0.item_name</code> out of the nested array. Registering these as custom dimensions in GA4 is what makes them visible in reporting rather than just collected.
+    </div>
+    <div class="row">
+      <button class="btn secondary" id="push-custom">Push a custom test event</button>
+      <button class="btn secondary" id="push-ecommerce">Push a purchase event</button>
+    </div>
+  </section>
+
+  <section>
+    <h3>Scroll and visibility</h3>
+    <h2>Something worth scrolling to</h2>
+    <div class="scroller">
+      <p class="filler">Scroll depth triggers fire at percentage thresholds. Element visibility triggers fire when a specific element enters the viewport. They are not the same thing and the difference matters — a short page may never reach 75%, but the element still becomes visible.</p>
+      <p class="filler">Roofing is a considered purchase. Most visitors read the whole page before enquiring, which is why scroll depth is a reasonable engagement signal here and a poor one on a checkout.</p>
+      <p class="filler">Keep scrolling. There is a target below, set to fire when it has been on screen for two seconds.</p>
+      <p class="filler">A trigger that fires the moment an element touches the viewport counts accidental scroll-past as engagement. A minimum on-screen duration is what makes it mean something.</p>
+      <p class="filler">Still scrolling. This filler exists so the page is tall enough for percentage thresholds to be meaningfully apart.</p>
+      <p class="filler">Almost there.</p>
+      <div id="visibility-target">Element visibility target &mdash; set a 2 second minimum on-screen duration</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Fictional company, fictional data. Built for GTM practice — see <b>Building Events in Google Tag Manager</b>.
+</footer>
+
+<div class="panel">
+  <div class="panel-head">
+    dataLayer
+    <button id="clear-log">Clear</button>
+  </div>
+  <div class="panel-body" id="log"><span class="empty">Nothing pushed yet. Interact with the page.</span></div>
+</div>
+
+<script>
+(function(){
+  var log = document.getElementById('log');
+  var count = 0;
+
+  function render(obj){
+    if(count === 0) log.innerHTML = '';
+    count++;
+    var name = (obj && obj.event) ? obj.event : '(no event name)';
+    var el = document.createElement('div');
+    el.className = 'entry';
+    el.innerHTML = '<span class="ev">' + count + '. ' + name + '</span>\n' +
+                   JSON.stringify(obj, null, 2);
+    log.appendChild(el);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  // Mirror every push into the panel without interfering with GTM.
+  var realPush = window.dataLayer.push;
+  window.dataLayer.push = function(){
+    for(var i = 0; i < arguments.length; i++){ render(arguments[i]); }
+    return realPush.apply(window.dataLayer, arguments);
+  };
+
+  document.getElementById('clear-log').addEventListener('click', function(){
+    count = 0;
+    log.innerHTML = '<span class="empty">Cleared. Interact with the page.</span>';
+  });
+
+  // --- Lead form: no URL change, confirmation revealed in place ---
+  var form = document.getElementById('lead-form');
+  var confirmation = document.getElementById('confirmation');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var select = document.getElementById('service');
+    var opt = select.options[select.selectedIndex];
+    var service = select.value;
+    var value = Number(opt.getAttribute('data-value'));
+
+    window.dataLayer.push({ ecommerce: null });
+    window.dataLayer.push({
+      event: 'generate_lead',
+      lead_type: 'quote_request',
+      form_name: 'roofing_quote',
+      value: value,
+      currency: 'USD',
+      ecommerce: {
+        items: [{
+          item_id: service,
+          item_name: opt.text,
+          item_category: 'roofing',
+          price: value,
+          quantity: 1
+        }]
+      }
+    });
+
+    form.style.display = 'none';
+    confirmation.style.display = 'block';
+  });
+
+  document.getElementById('reset-form').addEventListener('click', function(){
+    confirmation.style.display = 'none';
+    form.style.display = 'block';
+    form.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  // --- Manual pushes for practising nested values ---
+  document.getElementById('push-custom').addEventListener('click', function(){
+    window.dataLayer.push({
+      event: 'custom_test_event',
+      test_parameter: 'hello_from_the_sandbox',
+      user_type: 'returning',
+      page_section: 'event_parameters'
+    });
+  });
+
+  document.getElementById('push-ecommerce').addEventListener('click', function(){
+    window.dataLayer.push({ ecommerce: null });
+    window.dataLayer.push({
+      event: 'purchase',
+      transaction_id: 'T-' + Math.floor(Math.random() * 900000 + 100000),
+      value: 4820.00,
+      currency: 'USD',
+      ecommerce: {
+        transaction_id: 'T-DEMO-1',
+        value: 4820.00,
+        currency: 'USD',
+        items: [
+          { item_id:'roof-replacement', item_name:'Roof replacement', item_category:'roofing', price:4500.00, quantity:1 },
+          { item_id:'gutter-install',   item_name:'Gutter installation', item_category:'roofing', price:320.00,  quantity:1 }
+        ]
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
