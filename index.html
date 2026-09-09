@@ -6,20 +6,38 @@
 <meta name="robots" content="noindex,nofollow">
 <title>GTM Sandbox — Northgate Roofing (test site)</title>
 
-<!-- ============================================================
-     PASTE YOUR GTM CONTAINER SNIPPET ( part 1 of 2 ) DIRECTLY BELOW
-     Google Tag Manager > Admin > Install Google Tag Manager
-     It starts with:  <script>(function(w,d,s,l,i){...
-     ============================================================ -->
-
-<!-- PASTE GTM HEAD SNIPPET HERE -->
-
-<!-- ============================================================ -->
+<script>
+  // dataLayer must exist before anything else runs.
+  window.dataLayer = window.dataLayer || [];
+</script>
 
 <script>
-  // dataLayer must exist before GTM loads. The GTM snippet creates it too,
-  // but declaring it here means this page works even before GTM is installed.
-  window.dataLayer = window.dataLayer || [];
+/* ============================================================
+   CONTAINER LOADER
+
+   Add your own GTM container by putting it in the URL:
+
+       https://sandbox.reporting.zone/?gtm=GTM-XXXXXXX
+
+   Nothing to install, nothing to commit. Everyone practicing
+   can use their own container on the same page at the same time.
+   ============================================================ */
+(function () {
+  var id = new URLSearchParams(window.location.search).get('gtm');
+  window.__sandboxContainer = null;
+  if (!id) return;
+  if (!/^GTM-[A-Z0-9]{4,12}$/i.test(id)) { window.__sandboxContainer = 'invalid'; return; }
+  window.__sandboxContainer = id.toUpperCase();
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s);
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', window.__sandboxContainer);
+})();
 </script>
 
 <style>
@@ -40,6 +58,17 @@
   nav{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
   nav a{color:var(--muted);text-decoration:none}
   nav a:hover{color:var(--accent)}
+  #container-status{
+    max-width:960px;margin:0 auto;padding:9px 20px;font-size:13px;
+    display:flex;gap:10px;align-items:center;flex-wrap:wrap
+  }
+  .pill{
+    font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    letter-spacing:.04em;padding:5px 9px;border-radius:4px;text-transform:uppercase
+  }
+  .pill.on{background:#e4f3ea;color:var(--ok)}
+  .pill.off{background:#f0f1f3;color:var(--muted)}
+  .pill.bad{background:#fdeceb;color:#a3372f}
   main{max-width:960px;margin:0 auto;padding:0 20px 80px}
   section{padding:44px 0;border-bottom:1px solid var(--line)}
   h1{font-size:30px;line-height:1.25;margin:0 0 12px;letter-spacing:-.02em}
@@ -92,13 +121,11 @@
     margin-left:auto;background:#32363f;color:var(--code-ink);border:0;border-radius:4px;
     padding:4px 9px;font:inherit;font-size:11px;cursor:pointer
   }
-  .panel-head button:hover{background:#41465180}
   .panel-body{
     overflow:auto;padding:10px 14px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
     white-space:pre-wrap;word-break:break-word
   }
   .panel-body .entry{border-bottom:1px solid #2a2e36;padding:7px 0}
-  .panel-body .entry:last-child{border-bottom:0}
   .panel-body .ev{color:#7fd1a0;font-weight:700}
   .empty{color:#7c828d;font-style:italic}
   footer{max-width:960px;margin:0 auto;padding:26px 20px 120px;color:var(--muted);font-size:13px}
@@ -106,15 +133,6 @@
 </style>
 </head>
 <body>
-
-<!-- ============================================================
-     PASTE YOUR GTM CONTAINER SNIPPET (part 2 of 2) DIRECTLY BELOW
-     It starts with:  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-...
-     ============================================================ -->
-
-<!-- PASTE GTM BODY SNIPPET HERE -->
-
-<!-- ============================================================ -->
 
 <header>
   <div class="bar">
@@ -126,19 +144,21 @@
       <a href="https://www.google.com" id="outbound-link" target="_blank" rel="noopener">Reviews ↗</a>
     </nav>
   </div>
+  <div id="container-status"></div>
 </header>
 
 <main>
 
   <section>
     <h1>A test site that exists only to be tagged</h1>
-    <p class="lede">Nothing here is real. Every element below exists so you can practise one specific technique from the GTM course without touching a client.</p>
+    <p class="lede">Nothing here is real. Every element below exists so you can practice one specific technique from the GTM course without touching a client.</p>
     <div class="row">
       <button class="btn" id="hero-cta" data-cta="hero-primary">Get a free inspection</button>
       <button class="btn secondary" id="hero-secondary" data-cta="hero-secondary">See our work</button>
     </div>
     <div class="note">
-      <b>Before anything works:</b> paste your container snippet into the two marked places in this file's source, then open GTM &rarr; Preview and enter this page's URL. The panel in the bottom right shows every <code>dataLayer</code> push in real time, so you can see what GTM sees.
+      <b>Load your own container:</b> add <code>?gtm=GTM-XXXXXXX</code> to this page's URL, using your own container ID. Nothing to install and nothing to commit — several people can practice here at once, each with their own container.<br><br>
+      <b>Then open GTM → Preview</b> and paste the <b>full URL including <code>?gtm=</code></b>. Leave it off and Tag Assistant connects to a page with no container on it.
     </div>
   </section>
 
@@ -153,12 +173,12 @@
       <a class="btn secondary" href="mailto:hello@example.com" id="email-link">Email us</a>
     </div>
     <div class="note">
-      <b>Practise:</b> a trigger on <code>Click Classes</code>, one on <code>Click ID</code>, and one on the <code>data-cta</code> attribute. The third needs a user-defined Data Layer Variable — this is the difference between tracking <i>a</i> click and tracking <i>which</i> click.
+      <b>Practice:</b> a trigger on <code>Click Classes</code>, one on <code>Click ID</code>, and one on the <code>data-cta</code> attribute. The third needs a user-defined Data Layer Variable — the difference between tracking <i>a</i> click and tracking <i>which</i> click.
     </div>
   </section>
 
   <section id="quote">
-    <h3>The important one</h3>
+    <h3>The one that catches people out</h3>
     <h2>A form with no thank-you page</h2>
     <p>Submitting this form does not change the URL. The form hides and a confirmation appears in its place. This is how most lead generation sites behave, and it is the most common reason a conversion is never counted.</p>
 
@@ -187,10 +207,10 @@
     </div>
 
     <div class="note">
-      <b>Practise two ways, then compare:</b><br>
+      <b>Practice two ways, then compare:</b><br>
       1. An <b>element visibility</b> trigger on <code>#confirmation</code> — works without touching the site's code.<br>
       2. A <b>custom event</b> trigger on the <code>generate_lead</code> push this form makes — carries the value and the service with it.<br>
-      The second is better whenever you can get it, and the panel shows you exactly what it sends.
+      Then submit the form with every field empty and see which of them fires anyway.
     </div>
   </section>
 
@@ -199,7 +219,7 @@
     <h2>Passing value, currency and service</h2>
     <p>The form above pushes a <code>generate_lead</code> event carrying a value, a currency and an items array. Change the dropdown and submit again — the value changes with it.</p>
     <div class="note">
-      <b>Practise:</b> pull <code>value</code> and <code>currency</code> into a GA4 event tag as parameters, then pull <code>ecommerce.items.0.item_name</code> out of the nested array. Registering these as custom dimensions in GA4 is what makes them visible in reporting rather than just collected.
+      <b>Practice:</b> pull <code>value</code> and <code>currency</code> into a GA4 event tag as parameters, then pull <code>ecommerce.items.0.item_name</code> out of the nested array. Registering these as custom dimensions in GA4 is what makes them visible in reporting rather than just collected.
     </div>
     <div class="row">
       <button class="btn secondary" id="push-custom">Push a custom test event</button>
@@ -224,7 +244,7 @@
 </main>
 
 <footer>
-  Fictional company, fictional data. Built for GTM practice — see <b>Building Events in Google Tag Manager</b>.
+  Fictional company, fictional data. Built for GTM practice — see <b>Building Events in Google Tag Manager</b> and <b>GTM Sandbox Exercises</b>.
 </footer>
 
 <div class="panel">
@@ -237,6 +257,21 @@
 
 <script>
 (function(){
+  // --- container status line ---
+  var status = document.getElementById('container-status');
+  var c = window.__sandboxContainer;
+  if (c === 'invalid') {
+    status.innerHTML = '<span class="pill bad">Not loaded</span>' +
+      '<span>That does not look like a container ID. It should be <code>GTM-</code> followed by letters and numbers.</span>';
+  } else if (c) {
+    status.innerHTML = '<span class="pill on">Container loaded</span>' +
+      '<span><b>' + c + '</b> — open GTM &rarr; Preview and paste this full URL, including the <code>?gtm=</code> part.</span>';
+  } else {
+    status.innerHTML = '<span class="pill off">No container</span>' +
+      '<span>Add <code>?gtm=GTM-XXXXXXX</code> to the URL to load yours. The dataLayer panel works either way.</span>';
+  }
+
+  // --- dataLayer mirror ---
   var log = document.getElementById('log');
   var count = 0;
 
@@ -252,7 +287,6 @@
     log.scrollTop = log.scrollHeight;
   }
 
-  // Mirror every push into the panel without interfering with GTM.
   var realPush = window.dataLayer.push;
   window.dataLayer.push = function(){
     for(var i = 0; i < arguments.length; i++){ render(arguments[i]); }
@@ -264,7 +298,7 @@
     log.innerHTML = '<span class="empty">Cleared. Interact with the page.</span>';
   });
 
-  // --- Lead form: no URL change, confirmation revealed in place ---
+  // --- lead form: no URL change, confirmation revealed in place ---
   var form = document.getElementById('lead-form');
   var confirmation = document.getElementById('confirmation');
 
@@ -303,7 +337,6 @@
     form.scrollIntoView({behavior:'smooth', block:'center'});
   });
 
-  // --- Manual pushes for practising nested values ---
   document.getElementById('push-custom').addEventListener('click', function(){
     window.dataLayer.push({
       event: 'custom_test_event',
